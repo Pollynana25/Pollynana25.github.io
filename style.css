@@ -1,0 +1,28 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #cceeff, #ffffff);
+    color: #003366;
+    text-align: center;
+}
+.hero {
+    padding: 50px;
+}
+.logo {
+    max-width: 150px;
+}
+.buy-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 25px;
+    background-color: #00ccff;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+}
+.buy-button:hover {
+    background-color: #0099cc;
+}
