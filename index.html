@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>PollyNANA - The Blue Dachshund Coin</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PollyNANA - The Blue Dachshund Coin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="wrapper">
-    <div class="decorative-dog">🐶</div>
-    <img src="logo.png" alt="PollyNANA Logo" class="logo" />
-    <h1 class="title">Welcome to PollyNANA!</h1>
-    <p class="subtitle">The fun, blue dachshund-inspired meme coin 🐾</p>
-    <a href="#" class="buy-button">Buy on Base</a>
-    <div class="decorative-tail">🐾</div>
+  <canvas id="background-canvas"></canvas>
+  <div class="content">
+    <div class="dog-container">
+      <img src="logo.png" alt="Polly the blue dachshund" class="dog" />
+      <div class="tail"></div>
+    </div>
+    <h1>Welcome to PollyNANA!</h1>
+    <p>The fun, blue dachshund-inspired meme coin 🐾</p>
+    <a href="#" class="btn-buy">Buy on Base</a>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
