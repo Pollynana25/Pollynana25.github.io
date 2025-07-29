@@ -10,7 +10,7 @@
   <body>
     <header>
       <div class="logo">
-        <img src="images/logo.png" alt="PollyNANA" />
+        <img src="images/logo.png" alt="PollyNANA" id="pollyLogo" />
         <strong>PollyNANA</strong>
       </div>
       <nav>
@@ -21,7 +21,7 @@
     </header>
 
     <section class="hero">
-      <img src="images/logo.png" alt="Polly Mascot" />
+      <img src="images/logo.png" alt="Polly Mascot" class="mascot" />
       <h1>Welcome to PollyNANA</h1>
       <p>The fun, blue dachshund-inspired meme coin.</p>
       <a class="btn" href="#buy">Buy Now</a>
@@ -56,5 +56,16 @@
     <footer>
       &copy; 2025 PollyNANA. All rights reserved.
     </footer>
+
+    <div id="popup" class="hidden">
+      <p>🐾 Join our Telegram and be part of the PollyNANA pack!</p>
+      <button onclick="closePopup()">Close</button>
+    </div>
+
+    <canvas id="trail"></canvas>
+
+    <audio id="barkSound" src="https://www.fesliyanstudios.com/play-mp3/6548" preload="auto"></audio>
+
+    <script src="script.js"></script>
   </body>
 </html>
