@@ -169,6 +169,14 @@
 
     <canvas id="trail"></canvas>
     <audio id="barkSound" src="https://www.fesliyanstudios.com/play-mp3/6548" preload="auto"></audio>
+      <script>
+  window.addEventListener("load", function () {
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+      preloader.style.display = "none";
+    }
+  });
+</script>
     <script src="script.js"></script>
   </body>
 </html>
