@@ -1,112 +1,162 @@
+/* ========== Global Styles ========== */
 body {
   margin: 0;
   font-family: 'Baloo 2', cursive;
-  background: linear-gradient(to bottom right, #fdf1a9, #ffd57e);
-  color: #4b2e00;
+  background: linear-gradient(to bottom right, #a2d2ff, #bde0fe);
+  color: #222;
   overflow-x: hidden;
+  position: relative;
 }
 
+h1, h2 {
+  color: #0077cc;
+  text-align: center;
+}
+
+p, li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+section {
+  padding: 3rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ========== Header ========== */
 header {
-  background: #ffb84d;
-  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo img {
-  width: 40px;
-  border-radius: 50%;
+  height: 50px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
 }
 
 nav a {
-  margin-left: 1rem;
+  margin-left: 1.5rem;
   text-decoration: none;
-  color: #4b2e00;
+  color: #0077cc;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
+nav a:hover {
+  color: #ff4081;
+}
+
+/* ========== Hero Section ========== */
 .hero {
   text-align: center;
-  padding: 3rem 2rem;
+  background: radial-gradient(circle at top, #ffc8dd, #fff);
+  padding: 4rem 2rem;
 }
 
-.hero img {
-  width: 150px;
-  animation: wiggle 3s infinite ease-in-out;
+.hero .mascot {
+  width: 160px;
+  height: auto;
+  animation: float 3s ease-in-out infinite;
 }
 
-@keyframes wiggle {
+@keyframes float {
   0%, 100% {
-    transform: rotate(-5deg);
+    transform: translateY(0);
   }
   50% {
-    transform: rotate(5deg);
+    transform: translateY(-10px);
   }
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin: 1rem 0;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: auto;
 }
 
 .btn {
   display: inline-block;
-  margin-top: 2rem;
-  padding: 0.75rem 2rem;
-  background: #ff7f50;
-  color: white;
-  border-radius: 20px;
+  background-color: #ff4081;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 25px;
   text-decoration: none;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-  background: #ff5e26;
+  background-color: #e91e63;
 }
 
-.section {
-  padding: 2rem;
-  background: white;
-  border-top: 6px dashed #ffcd00;
-}
-
-.section h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
+/* ========== Social Icons ========== */
 .socials {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 1.2rem;
+  margin-top: 1rem;
 }
 
 .socials img {
-  width: 40px;
-  height: 40px;
-  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
+  width: 36px;
+  height: 36px;
+  transition: transform 0.3s ease;
 }
 
+.socials img:hover {
+  transform: scale(1.2);
+}
+
+/* ========== Popup ========== */
+#popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0077cc;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 2000;
+}
+
+#popup.show {
+  display: block;
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== Footer ========== */
 footer {
   text-align: center;
-  font-size: 0.9rem;
+  background: #0077cc;
+  color: white;
   padding: 1rem;
-  background: #ffb84d;
-  margin-top: 2rem;
+  margin-top: 4rem;
+}
+
+/* ========== Trail Effect ========== */
+#trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
 }
