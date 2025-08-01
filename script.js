@@ -1,57 +1,40 @@
 // script.js
 
-// Preloader
+// Hide preloader
 window.addEventListener("load", () => {
-  document.getElementById("preloader").style.display = "none";
+  const preloader = document.getElementById("preloader");
+  if (preloader) preloader.style.display = "none";
 });
 
-// Cursor trail effect
-const trailCanvas = document.getElementById("trail");
-const ctx = trailCanvas.getContext("2d");
+// Canvas trail (optional sparkles or dots)
+const canvas = document.getElementById("trail");
+const ctx = canvas.getContext("2d");
 
-trailCanvas.width = window.innerWidth;
-trailCanvas.height = window.innerHeight;
-
-let particles = [];
-
-class Particle {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.radius = 4;
-    this.alpha = 1;
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255, 111, 97, ${this.alpha})`;
-    ctx.fill();
-  }
-  update() {
-    this.y -= 0.5;
-    this.alpha -= 0.01;
-  }
-}
-
-function animate() {
-  ctx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
-  particles.forEach((p, i) => {
-    p.update();
-    p.draw();
-    if (p.alpha <= 0) particles.splice(i, 1);
-  });
-  requestAnimationFrame(animate);
-}
-
-animate();
-
-document.addEventListener("mousemove", (e) => {
-  for (let i = 0; i < 3; i++) {
-    particles.push(new Particle(e.clientX, e.clientY));
-  }
-});
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 window.addEventListener("resize", () => {
-  trailCanvas.width = window.innerWidth;
-  trailCanvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
+
+const trails = [];
+
+window.addEventListener("mousemove", (e) => {
+  trails.push({ x: e.clientX, y: e.clientY, alpha: 1 });
+});
+
+function animateTrail() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < trails.length; i++) {
+    const t = trails[i];
+    ctx.beginPath();
+    ctx.arc(t.x, t.y, 5, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 111, 97, ${t.alpha})`;
+    ctx.fill();
+    t.alpha -= 0.02;
+    if (t.alpha <= 0) trails.splice(i, 1);
+  }
+  requestAnimationFrame(animateTrail);
+}
+animateTrail();
