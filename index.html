@@ -9,9 +9,7 @@
     <link rel="icon" type="image/png" href="images/logo.png" />
   </head>
   <body>
-    <div id="preloader">
-      <div class="loader"></div>
-    </div>
+    <div id="preloader"></div>
 
     <header>
       <div class="container">
@@ -50,7 +48,6 @@
         <p>
           PollyNANA has always been overlooked for her tiny legs and big heart. But now she's leading a revolution of kindness, chaos, and barking fun on the blockchain.
         </p>
-        <img src="images/logo.png" alt="Polly logo" class="about-logo" />
       </div>
     </section>
 
@@ -63,7 +60,10 @@
           <li><strong>Team / Founder:</strong> 25% – 250,000,000 POLLY</li>
           <li><strong>Marketing / Growth:</strong> 10% – 100,000,000 POLLY</li>
         </ul>
-        <p><strong>Contract:</strong><br /><code>0x49af8c0dd0d2c5bce9e3afd2a1d404004863c052</code></p>
+        <p>
+          <strong>Contract:</strong><br />
+          <code>0x49af8c0dd0d2c5bce9e3afd2a1d404004863c052</code>
+        </p>
       </div>
     </section>
 
@@ -85,18 +85,10 @@
       <div class="container">
         <h2>Join the Community</h2>
         <div class="social-icons">
-          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733635.png" alt="Twitter" /></a>
-          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" /></a>
-          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" /></a>
+          <a href="#"><img src="images/twitter.png" alt="Twitter" /></a>
+          <a href="#"><img src="images/telegram.png" alt="Telegram" /></a>
+          <a href="#"><img src="images/discord.png" alt="Discord" /></a>
         </div>
-      </div>
-    </section>
-
-    <section class="buy section" id="buy">
-      <div class="container">
-        <h2>How to Buy</h2>
-        <p>You can buy PollyNANA on your favorite decentralized exchange by connecting your wallet.</p>
-        <a href="#" class="btn">Buy on Uniswap</a>
       </div>
     </section>
 
@@ -106,17 +98,7 @@
       </div>
     </footer>
 
-    <canvas id="trail"></canvas>
-    <audio id="barkSound" src="https://www.fesliyanstudios.com/play-mp3/6548" preload="auto"></audio>
-
-    <script>
-      window.addEventListener("load", function () {
-        const preloader = document.getElementById("preloader");
-        if (preloader) {
-          preloader.style.display = "none";
-        }
-      });
-    </script>
+    <div id="trail"></div>
     <script src="script.js"></script>
   </body>
 </html>
