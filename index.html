@@ -1,173 +1,73 @@
-/* style.css */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PollyNANA</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="preloader"></div>
 
-body {
-  cursor: url('images/paw-cursor.png'), auto;
-  background: linear-gradient(180deg, #fff8e7 0%, #ffe8c8 100%);
-  font-family: 'Baloo 2', cursive;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-}
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo.png" alt="PollyNANA Logo" />
+        <h1>PollyNANA</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#tokenomics">Tokenomics</a></li>
+          <li><a href="#socials">Socials</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-#preloader {
-  background: #fff url('images/loading.gif') no-repeat center center;
-  background-size: 80px 80px;
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  z-index: 9999;
-}
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Meet PollyNANA!</h1>
+      <p>Your next favorite meme crypto companion, full of joy and bananas!</p>
+      <a class="btn" href="#">Buy Now</a>
+    </div>
+    <div class="hero-image">
+      <img src="images/mascot.png" alt="PollyNANA Mascot" />
+    </div>
+  </section>
 
-header {
-  background-color: #ffcc70;
-  padding: 10px 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+  <section class="section" id="about">
+    <h2>About PollyNANA</h2>
+    <p style="text-align:center;">
+      PollyNANA is the meme token born to bring fun, community and bananas to the blockchain.
+    </p>
+    <img class="about-logo" src="images/logo.png" alt="About Logo" />
+  </section>
 
-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
+  <section class="section" id="tokenomics">
+    <h2>Tokenomics</h2>
+    <ul>
+      <li>Total Supply: 1,000,000,000 POLLY</li>
+      <li>90% Liquidity Locked</li>
+      <li>5% Marketing</li>
+      <li>5% Dev Fund</li>
+    </ul>
+  </section>
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+  <section class="section" id="socials">
+    <h2>Follow Us</h2>
+    <div class="social-icons">
+      <a href="#"><img src="images/twitter.png" alt="Twitter" /></a>
+      <a href="#"><img src="images/telegram.png" alt="Telegram" /></a>
+    </div>
+  </section>
 
-.logo img {
-  height: 50px;
-}
+  <footer>
+    &copy; 2025 PollyNANA. All Rights Reserved.
+  </footer>
 
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-nav ul li a:hover {
-  color: #ff6f61;
-}
-
-.hero {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 60px 20px;
-  background: url('images/hero-bg.png') no-repeat center center;
-  background-size: cover;
-}
-
-.hero-content {
-  max-width: 800px;
-}
-
-.hero-content h1 {
-  font-size: 48px;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.hero-content p {
-  font-size: 20px;
-  color: #555;
-}
-
-.hero-image img {
-  max-width: 300px;
-  width: 100%;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.btn {
-  background-color: #ff6f61;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-size: 18px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  display: inline-block;
-  margin-top: 20px;
-}
-
-.btn:hover {
-  background-color: #ff4433;
-}
-
-.section {
-  padding: 60px 20px;
-  background-color: #fff5dc;
-}
-
-.section h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.about-logo {
-  display: block;
-  margin: 20px auto;
-  max-width: 150px;
-}
-
-ul, ol {
-  max-width: 800px;
-  margin: 0 auto;
-  padding-left: 20px;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.social-icons img {
-  width: 40px;
-  margin: 0 10px;
-  transition: transform 0.3s;
-}
-
-.social-icons img:hover {
-  transform: scale(1.2);
-}
-
-footer {
-  background: #ffcc70;
-  text-align: center;
-  padding: 20px;
-  font-weight: bold;
-}
-
-canvas#trail {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-}
+  <canvas id="trail"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>
