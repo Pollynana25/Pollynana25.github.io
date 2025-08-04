@@ -69,8 +69,11 @@ window.addEventListener("resize", () => {
   canvas.height = window.innerHeight;
 });
 
-// Fix PancakeSwap redirect
-const buyBtn = document.querySelector("a[href*='pancakeswap']");
-if (buyBtn) {
-  buyBtn.href = `https://pancakeswap.finance/swap?outputCurrency=0x49af8c0dd0d2c5bce9e3afd2a1d404004863c052&chain=bsc`;
-}
+// Update Uniswap link for Base chain
+document.addEventListener("DOMContentLoaded", () => {
+  const buyBtn = document.querySelector("a.btn[href*='uniswap']") || document.querySelector("a.btn[href*='buy']");
+  if (buyBtn) {
+    buyBtn.href = `https://app.uniswap.org/swap?outputCurrency=0x49af8c0dd0d2c5bce9e3afd2a1d404004863c052&chain=base`;
+    buyBtn.target = "_blank";
+  }
+});
