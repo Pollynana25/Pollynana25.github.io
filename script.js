@@ -1,40 +1,71 @@
 // script.js
 
-// Hide preloader
-window.addEventListener("load", () => {
+// Preloader handling
+window.addEventListener("load", function () {
   const preloader = document.getElementById("preloader");
-  if (preloader) preloader.style.display = "none";
+  if (preloader) {
+    preloader.style.display = "none";
+  }
 });
 
-// Canvas trail (optional sparkles or dots)
-const canvas = document.getElementById("trail");
-const ctx = canvas.getContext("2d");
+// Bark sound on click
+const barkSound = document.getElementById("barkSound");
+document.addEventListener("click", () => {
+  if (barkSound) barkSound.play();
+});
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// Smooth scroll for nav links
+document.querySelectorAll("nav a").forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href").slice(1);
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop - 60,
+        behavior: "smooth",
+      });
+    }
+  });
+});
+
+// Cursor trail effect
+const trailCanvas = document.getElementById("trail");
+const ctx = trailCanvas.getContext("2d");
+
+let width = (trailCanvas.width = window.innerWidth);
+let height = (trailCanvas.height = window.innerHeight);
+
+let particles = [];
 
 window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  width = trailCanvas.width = window.innerWidth;
+  height = trailCanvas.height = window.innerHeight;
 });
 
-const trails = [];
-
-window.addEventListener("mousemove", (e) => {
-  trails.push({ x: e.clientX, y: e.clientY, alpha: 1 });
+document.addEventListener("mousemove", (e) => {
+  particles.push({
+    x: e.clientX,
+    y: e.clientY,
+    alpha: 1,
+    radius: Math.random() * 6 + 2,
+  });
 });
 
-function animateTrail() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let i = 0; i < trails.length; i++) {
-    const t = trails[i];
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+  for (let i = 0; i < particles.length; i++) {
+    let p = particles[i];
     ctx.beginPath();
-    ctx.arc(t.x, t.y, 5, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255, 111, 97, ${t.alpha})`;
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 111, 97, ${p.alpha})`;
     ctx.fill();
-    t.alpha -= 0.02;
-    if (t.alpha <= 0) trails.splice(i, 1);
+    p.alpha -= 0.02;
+    if (p.alpha <= 0) {
+      particles.splice(i, 1);
+      i--;
+    }
   }
-  requestAnimationFrame(animateTrail);
+  requestAnimationFrame(animate);
 }
-animateTrail();
+animate();
