@@ -1,67 +1,61 @@
 // script.js
 
-// Preloader handling
-window.addEventListener("load", function () {
-  const preloader = document.getElementById("preloader");
-  if (preloader) {
-    preloader.style.display = "none";
-  }
-});
-
-// Bark sound on click
-const barkSound = document.getElementById("barkSound");
-document.addEventListener("click", () => {
-  if (barkSound) barkSound.play();
-});
-
-// Smooth scroll for nav links
-document.querySelectorAll("nav a").forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute("href").slice(1);
-    const targetSection = document.getElementById(targetId);
-    if (targetSection) {
-      window.scrollTo({
-        top: targetSection.offsetTop - 60,
-        behavior: "smooth",
-      });
+// Bark sound on hover (optional)
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('mouseenter', () => {
+    const bark = document.getElementById('barkSound');
+    if (bark) {
+      bark.currentTime = 0;
+      bark.play();
     }
   });
 });
 
-// Cursor trail effect
-const trailCanvas = document.getElementById("trail");
-const ctx = trailCanvas.getContext("2d");
+// Paw trail effect
+const canvas = document.getElementById("trail");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-let width = (trailCanvas.width = window.innerWidth);
-let height = (trailCanvas.height = window.innerHeight);
+let mouse = {
+  x: undefined,
+  y: undefined
+};
 
 let particles = [];
+const pawImg = new Image();
+pawImg.src = 'images/paw-cursor.png';
 
-window.addEventListener("resize", () => {
-  width = trailCanvas.width = window.innerWidth;
-  height = trailCanvas.height = window.innerHeight;
-});
+class Particle {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.size = 25;
+    this.opacity = 1;
+    this.fade = 0.03;
+  }
+  draw() {
+    ctx.globalAlpha = this.opacity;
+    ctx.drawImage(pawImg, this.x, this.y, this.size, this.size);
+    ctx.globalAlpha = 1;
+  }
+  update() {
+    this.opacity -= this.fade;
+  }
+}
 
-document.addEventListener("mousemove", (e) => {
-  particles.push({
-    x: e.clientX,
-    y: e.clientY,
-    alpha: 1,
-    radius: Math.random() * 6 + 2,
-  });
+window.addEventListener("mousemove", function (e) {
+  mouse.x = e.x;
+  mouse.y = e.y;
+  particles.push(new Particle(mouse.x, mouse.y));
 });
 
 function animate() {
-  ctx.clearRect(0, 0, width, height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < particles.length; i++) {
-    let p = particles[i];
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255, 111, 97, ${p.alpha})`;
-    ctx.fill();
-    p.alpha -= 0.02;
-    if (p.alpha <= 0) {
+    particles[i].update();
+    particles[i].draw();
+    if (particles[i].opacity <= 0) {
       particles.splice(i, 1);
       i--;
     }
@@ -69,3 +63,14 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// Fix PancakeSwap redirect
+const buyBtn = document.querySelector("a[href*='pancakeswap']");
+if (buyBtn) {
+  buyBtn.href = `https://pancakeswap.finance/swap?outputCurrency=0x49af8c0dd0d2c5bce9e3afd2a1d404004863c052&chain=bsc`;
+}
