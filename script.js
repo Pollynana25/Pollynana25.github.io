@@ -1,79 +1,43 @@
 // script.js
 
-// Bark sound on hover (optional)
-document.querySelectorAll('.btn').forEach(btn => {
-  btn.addEventListener('mouseenter', () => {
-    const bark = document.getElementById('barkSound');
-    if (bark) {
-      bark.currentTime = 0;
-      bark.play();
-    }
-  });
+// Preloader: Nasconde il caricamento dopo che la pagina è completamente caricata
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) preloader.style.display = "none";
 });
 
-// Paw trail effect
+// Trail canvas effetto (scia che segue il cursore)
 const canvas = document.getElementById("trail");
 const ctx = canvas.getContext("2d");
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
-let mouse = {
-  x: undefined,
-  y: undefined
-};
-
-let particles = [];
-const pawImg = new Image();
-pawImg.src = 'images/paw-cursor.png';
-
-class Particle {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.size = 25;
-    this.opacity = 1;
-    this.fade = 0.03;
-  }
-  draw() {
-    ctx.globalAlpha = this.opacity;
-    ctx.drawImage(pawImg, this.x, this.y, this.size, this.size);
-    ctx.globalAlpha = 1;
-  }
-  update() {
-    this.opacity -= this.fade;
-  }
-}
-
-window.addEventListener("mousemove", function (e) {
-  mouse.x = e.x;
-  mouse.y = e.y;
-  particles.push(new Particle(mouse.x, mouse.y));
-});
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let i = 0; i < particles.length; i++) {
-    particles[i].update();
-    particles[i].draw();
-    if (particles[i].opacity <= 0) {
-      particles.splice(i, 1);
-      i--;
-    }
-  }
-  requestAnimationFrame(animate);
-}
-animate();
 
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
 
-// Update Uniswap link for Base chain
-document.addEventListener("DOMContentLoaded", () => {
-  const buyBtn = document.querySelector("a.btn[href*='uniswap']") || document.querySelector("a.btn[href*='buy']");
-  if (buyBtn) {
-    buyBtn.href = `https://app.uniswap.org/swap?outputCurrency=0x49af8c0dd0d2c5bce9e3afd2a1d404004863c052&chain=base`;
-    buyBtn.target = "_blank";
-  }
+const trails = [];
+
+window.addEventListener("mousemove", (e) => {
+  trails.push({ x: e.clientX, y: e.clientY, alpha: 1 });
 });
+
+function animateTrail() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < trails.length; i++) {
+    const t = trails[i];
+    ctx.beginPath();
+    ctx.arc(t.x, t.y, 5, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 111, 97, ${t.alpha})`;
+    ctx.fill();
+    t.alpha -= 0.02;
+    if (t.alpha <= 0) {
+      trails.splice(i, 1);
+      i--;
+    }
+  }
+  requestAnimationFrame(animateTrail);
+}
+animateTrail();
