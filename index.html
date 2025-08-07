@@ -6,84 +6,98 @@
   <title>PollyNANA - The Bassotto Coin</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="PollyNANA Logo" />
-    <h1>PollyNANA</h1>
-    <p>The cutest coin inspired by a real bassotto 🐶</p>
-    <a class="cta-button" href="#buy">Buy Now</a>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logo.png" alt="PollyNANA" />
+      <span>PollyNANA</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#tokenomics">Tokenomics</a></li>
+      <li><a href="#how-to-buy">How to Buy</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+    <a class="cta-nav" href="https://app.uniswap.org/swap?outputCurrency=0x49af8c0dd0d2c5bce9e3afd2a1d404004863c052&chain=base" target="_blank">Buy Now</a>
+  </nav>
+
+  <header class="hero">
+    <h1>The Most Playful Bassotto Coin 🐶</h1>
+    <p>Join the PollyNANA movement and be part of the most vibrant memecoin community on Base.</p>
+    <a class="cta-button" href="#how-to-buy">How to Buy</a>
   </header>
 
-  <section id="about">
-    <h2>What is PollyNANA?</h2>
-    <p>PollyNANA is a playful, community-driven memecoin inspired by the real-life adventures of a beloved bassotto. With deflationary mechanics and meme-powered momentum, it's more than a coin—it's a movement.</p>
+  <section id="about" class="section">
+    <h2>About PollyNANA</h2>
+    <p>PollyNANA is a deflationary, meme-powered token inspired by a real bassotto. It brings fun, community, and innovation to the Base chain. Woofed with love and backed by passion.</p>
   </section>
 
-  <section id="tokenomics">
+  <section id="tokenomics" class="section colorful">
     <h2>Tokenomics</h2>
-    <div class="tokenomics">
-      <div>
-        <h3>Supply</h3>
-        <p>1,000,000,000,000,000 $PollyNANA</p>
-      </div>
-      <div>
-        <h3>Tax</h3>
-        <p>1% Buy / 1% Sell</p>
-      </div>
-      <div>
-        <h3>Liquidity</h3>
-        <p>Locked forever</p>
-      </div>
-      <div>
-        <h3>Contract</h3>
-        <p><code>0x49af8c0dd0d2c5bce9e3afd2a1d404004863c052</code></p>
-      </div>
+    <div class="tokenomics-grid">
+      <div><h3>Total Supply</h3><p>1,000,000,000,000,000</p></div>
+      <div><h3>Buy/Sell Tax</h3><p>1% / 1%</p></div>
+      <div><h3>Liquidity</h3><p>100% Locked Forever</p></div>
+      <div><h3>Contract</h3><p class="contract">0x49af8c0dd0d2c5bce9e3afd2a1d404004863c052</p></div>
     </div>
   </section>
 
-  <section id="how-to-buy">
-    <h2>How to Buy</h2>
-    <p>1. Install MetaMask or Trust Wallet<br />
-       2. Bridge ETH to Base Network<br />
-       3. Visit Uniswap and paste our contract<br />
-       4. Set slippage to 1% and swap!</p>
+  <section id="how-to-buy" class="section">
+    <h2>How to Buy PollyNANA</h2>
+    <ol class="steps">
+      <li>1. Install MetaMask or Trust Wallet</li>
+      <li>2. Bridge ETH to Base</li>
+      <li>3. Go to Uniswap</li>
+      <li>4. Paste PollyNANA contract address</li>
+      <li>5. Set 1% slippage and swap</li>
+    </ol>
     <a class="cta-button" href="https://app.uniswap.org/swap?outputCurrency=0x49af8c0dd0d2c5bce9e3afd2a1d404004863c052&chain=base" target="_blank">Trade on Uniswap</a>
   </section>
 
-  <section id="community">
-    <h2>Join the Community</h2>
-    <p>Hop in with fellow bassotto lovers, meme creators and holders!</p>
-    <a class="cta-button" href="https://t.me/PollyNANA" target="_blank">Telegram</a>
-    <a class="cta-button" href="https://twitter.com/PollyNANACoin" target="_blank">Twitter / X</a>
-  </section>
-
-  <section id="roadmap">
+  <section id="roadmap" class="section colorful">
     <h2>Roadmap</h2>
-    <div class="tokenomics">
-      <div>
+    <div class="roadmap">
+      <div class="phase">
         <h3>Phase 1</h3>
-        <p>Launch, Meme Contest, CMC & CG Listings</p>
+        <ul>
+          <li>Launch</li>
+          <li>1000+ Holders</li>
+          <li>CMC & CG Listings</li>
+        </ul>
       </div>
-      <div>
+      <div class="phase">
         <h3>Phase 2</h3>
-        <p>Merch Drop, Whitepaper, Marketing</p>
+        <ul>
+          <li>Whitepaper</li>
+          <li>Merch Launch</li>
+          <li>Social Campaigns</li>
+        </ul>
       </div>
-      <div>
+      <div class="phase">
         <h3>Phase 3</h3>
-        <p>DEX partnerships, NFTs, Staking</p>
+        <ul>
+          <li>NFTs</li>
+          <li>Staking & Rewards</li>
+          <li>Top 100 Memecoin</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="whitepaper">
-    <h2>Whitepaper</h2>
-    <p>Our complete vision and token strategy.</p>
-    <a class="cta-button" href="/whitepaper.pdf" target="_blank">Read Whitepaper</a>
+  <section id="community" class="section">
+    <h2>Join Our Community</h2>
+    <p>Stay updated with memes, updates, giveaways, and more.</p>
+    <div class="community-links">
+      <a class="cta-button" href="https://t.me/PollyNANA" target="_blank">Telegram</a>
+      <a class="cta-button" href="https://twitter.com/PollyNANACoin" target="_blank">Twitter/X</a>
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 PollyNANA. Woofed with ❤️ for the community.
+    <p>&copy; 2025 PollyNANA. Made with 💖 by Bassotto lovers.</p>
   </footer>
 </body>
 </html>
